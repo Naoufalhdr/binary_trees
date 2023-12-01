@@ -1,10 +1,24 @@
 #include "binary_trees.h"
+
 /**
-  * binary_tree_inorder - define function
-  * @void: describe argument
-  * Return: 0 on success
-  */
-void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int))
+ * bst_search - Searches for a value in a Binary Search Tree.
+ *
+ * @tree: A pointer to the root node of the BST to search.
+ * @value: The value to search in the tree.
+ *
+ * Return: A pointer to the node containing a value equals to value.
+ */
+bst_t *bst_search(const bst_t *tree, int value)
 {
-	return (0);
+	if (tree != NULL)
+	{
+		if (tree->n == value)
+			return ((bst_t *)tree);
+		if (tree->n > value)
+			return (bst_search(tree->left, value));
+
+		return (bst_search(tree->right, value));
+	}
+
+	return (NULL);
 }
